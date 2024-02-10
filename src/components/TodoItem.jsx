@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaToggleOn, FaToggleOff, FaTrash, FaCheck, FaTimes, FaPencilAlt } from 'react-icons/fa';
+import { IoCheckmarkDoneSharp } from "react-icons/io5";
 import { FiEdit } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import { updateTodo, removeTodo, markCompleted, markIncomplete } from '../redux/action';
@@ -31,7 +32,7 @@ const TodoItem = ({ todo, index }) => {
   };
 
   return (
-    <li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 py-2 gap-4">
+<li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-orange-200 py-2 gap-4">
       <div className="flex items-center">
         <span className="mr-4 text-gray-500">{index + 1}.</span>
         {editMode ? (
@@ -53,14 +54,14 @@ const TodoItem = ({ todo, index }) => {
             className="mr-2 text-sm bg-green-500 text-white sm:px-2 px-1 py-1 rounded"
             onClick={handleUpdate}
           >
-            <FaCheck />
+            <IoCheckmarkDoneSharp/>
           </button>
         ) : (
           <button
-            className="mr-2 text-sm bg-red-500 text-white sm:px-2 px-1 py-1 rounded"
+            className="mr-2 text-sm bg-orange-500 text-white sm:px-2 px-1 py-1 rounded"
             onClick={() => setEditMode(true)}
           >
-            <FiEdit />
+            <FiEdit/>
           </button>
         )}
         <button

@@ -22,7 +22,7 @@ const TodoList = () => {
 
   return (
     <ul>
-      <li className="my-2 text-md italic">Your ToDos:</li>
+      <li className="my-2 text-lg italic text-center mt-4">Your ToDo&#45;s:</li>
       {filteredTodos.map((todo, index) => (
         <TodoItem key={index} todo={todo} index={index} />
       ))}
