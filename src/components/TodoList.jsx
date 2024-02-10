@@ -18,7 +18,7 @@ const TodoList = () => {
     });
   });
 
-  console.log('Filtered Todos:', filteredTodos);
+  //console.log('Filtered Todos:', filteredTodos);
 
   return (
     <ul>
