@@ -8,15 +8,15 @@ import { updateTodo, removeTodo, markCompleted, markIncomplete } from '../redux/
 
 const TodoItem = ({ todo, index }) => {
   const dispatch = useDispatch();
-  const [editMode, setEditMode] = useState(false);
-  const [editedText, setEditedText] = useState(todo.text);
+  const [editMode, setEditMode] = useState(false);          //local state
+  const [editedText, setEditedText] = useState(todo.text); //store the editet text
 
   const handleDelete = () => {
     if (editMode) {
       // If in edit mode, cancel editing and exit edit mode
       setEditMode(false);
     } else {
-      dispatch(removeTodo(index));
+      dispatch(removeTodo(index));                     //dispatch action to remove the todo and display a message
       toast.success('Successfully deleted task!', {
         duration: 3500,
       });
@@ -24,7 +24,7 @@ const TodoItem = ({ todo, index }) => {
   };
 
   const handleUpdate = () => {
-    dispatch(updateTodo(index, editedText));
+    dispatch(updateTodo(index, editedText));   //dispatch action to update a todo item
     setEditMode(false);
     toast.success('Successfully updated task!', {
       duration: 3500,
@@ -32,12 +32,12 @@ const TodoItem = ({ todo, index }) => {
   };
 
   return (
-<li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-orange-200 py-2 gap-4">
+<li className="flex flex-col sm:flex-row sm:items-center justify-between border-b-2 border-orange-200 py-2 gap-4"> 
       <div className="flex items-center">
         <span className="mr-4 text-gray-500">{index + 1}.</span>
         {editMode ? (
           <input
-            type="text"
+            type="text"  
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
             className="mr-4"

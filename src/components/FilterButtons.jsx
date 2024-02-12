@@ -4,9 +4,9 @@ import { filterTodos, markAllCompleted } from '../redux/action';
 
 const FilterButtons = () => {
   const dispatch = useDispatch();
-  const currentFilter = useSelector((state) => state.filter);
+  const currentFilter = useSelector((state) => state.filter); //get the filter from the store
 
-  const handleFilter = (filter) => {
+  const handleFilter = (filter) => {   //when the filter is applied, dispatch the action
     dispatch(filterTodos(filter));
   };
 

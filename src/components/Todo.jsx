@@ -7,29 +7,34 @@ import { addTodo, updateSearchTerm } from '../redux/action';
 import { toast } from 'react-hot-toast';
 
 const Todo = () => {
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector((state) => state.todos);    //extract todos and filters from the store
   const filter = useSelector((state) => state.filter);
-  const dispatch = useDispatch();
-  const [newTodoText, setNewTodoText] = useState('');
+  const dispatch = useDispatch();                       //dispatch actions to the store
+  const [newTodoText, setNewTodoText] = useState('');  //local state
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleAddTodo = (text) => {
+  const handleAddTodo = (text) => {               //dispatch add new task action
     dispatch(addTodo(text));
   };
 
-  const handleAddTodoClick = () => {
-    if (newTodoText.trim() !== '') {
+  const handleAddTodoClick = () => {             //when the add button is clicked, check that text isn't empty and dispatch the add ction 
+    if (newTodoText.trim() !== '') {         
       handleAddTodo(newTodoText.trim());
       setNewTodoText('');
       toast.success("Task added sucessfully!",{
         duration:3500,
       })
-
+    
+    }
+    else{
+      toast.error("No text provided!",{
+        duration:3500
+      })
     }
   };
 
   const handleSearchChange = (value) => {
-    setSearchTerm(value);
+    setSearchTerm(value);                     //on input, set state and dispatch the action to update the search term
     dispatch(updateSearchTerm(value));
   };
 
